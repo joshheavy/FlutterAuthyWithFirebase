@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "621019394161",
+    "project_id": "authy-75518",
+    "storage_bucket": "authy-75518.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621019394161:android:af88f5de66c7f5b2e36bd0",
+        "android_client_info": {
+          "package_name": "com.example.authy_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621019394161-a4pkj4mbod0bjdoq1pqj6tqmq6ulc23f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpG9R_lEkmgvdyvp2fd2-HxoFXCrMVMXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621019394161-a4pkj4mbod0bjdoq1pqj6tqmq6ulc23f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
