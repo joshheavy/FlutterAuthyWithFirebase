@@ -28,12 +28,21 @@ class _LoginScreenState extends State<LoginScreen> {
     return state.isFormValid && isPopulated && !(state.isSubmitting!);
   }
 
+  late bool _obsecureText;
+
+  _toggle() {
+    setState(() {
+      _obsecureText = !_obsecureText;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _loginBloc = BlocProvider.of<LoginBloc>(context);
     _emailController.addListener(_onEmailChange);
     _passwordController.addListener(_onPasswordChange);
+    _obsecureText = true;
   }
 
   @override
@@ -125,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             margin: const EdgeInsets.symmetric(horizontal: 20),
                             child: TextFormField(
                               controller: _passwordController,
-                              obscureText: true,
+                              obscureText: _obsecureText,
                               autocorrect: false,
                               validator: (_) {
                                 return !(state.isPasswordValid!)
@@ -135,7 +144,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               decoration: InputDecoration(
                                 icon: const Icon(Icons.lock),
                                 labelText: 'Password',
-                                suffixIcon: const Icon(Icons.remove_red_eye),
+                                suffixIcon: IconButton(
+                                  onPressed: _toggle,
+                                  icon: Icon(
+                                    Icons.remove_red_eye,
+                                    color: _obsecureText
+                                        ? Colors.blue
+                                        : AppColors.buttonColors,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -144,21 +161,20 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Align(
                               alignment: Alignment.bottomRight,
                               child: TextButton(
-                                style: TextButton.styleFrom(
-                                  primary: AppColors.textColors),
-                                onPressed: () {},
-                                child: Text('Forgot Password?')),
+                                  style: TextButton.styleFrom(
+                                      primary: AppColors.textColors),
+                                  onPressed: () {},
+                                  child: Text('Forgot Password?')),
                             ),
                           ),
                           SizedBox(height: 10.0),
                           CustomButton(
-                            text: 'Sign In',
-                            onPressed: () {
-                              if(isButtonEnabled(state)){
-                                _onFormSubmitted();
-                              }
-                            }
-                          ),
+                              text: 'Sign In',
+                              onPressed: () {
+                                if (isButtonEnabled(state)) {
+                                  _onFormSubmitted();
+                                }
+                              }),
                         ],
                       ),
                     );
@@ -187,7 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.bold),
                       ),
                       onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => RegisterScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen()),
                       ),
                     ),
                   ],
