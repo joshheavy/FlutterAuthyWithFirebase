@@ -85,127 +85,129 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Navigator.pop(context);
           }
         },
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset('assets/images/Allura.png'),
-                SizedBox(height: 10.0),
-                Text(
-                  'Create an Account',
-                  style: TextStyle(
-                      color: AppColors.textColors,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 19.0),
-                ),
-                BlocBuilder<RegisterBloc, RegisterState>(
-                  builder: (context, state) {
-                    return Form(
-                      key: _key,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextFormField(
-                              controller: _fullnameController,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                labelText: 'Full Name',
-                                icon: const Icon(Icons.email),
+        child: DismissKeyboard(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset('assets/images/Allura.png'),
+                  SizedBox(height: 10.0),
+                  Text(
+                    'Create an Account',
+                    style: TextStyle(
+                        color: AppColors.textColors,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19.0),
+                  ),
+                  BlocBuilder<RegisterBloc, RegisterState>(
+                    builder: (context, state) {
+                      return Form(
+                        key: _key,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextFormField(
+                                controller: _fullnameController,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  labelText: 'Full Name',
+                                  icon: const Icon(Icons.email),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextFormField(
-                              controller: _phoneController,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                labelText: 'Phone Number',
-                                icon: const Icon(Icons.phone_android),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextFormField(
+                                controller: _phoneController,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  labelText: 'Phone Number',
+                                  icon: const Icon(Icons.phone_android),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextFormField(
-                              controller: _emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              autocorrect: false,
-                              validator: (_) {
-                                return !(state.isEmailValid!)
-                                    ? 'Invalid Email'
-                                    : null;
-                              },
-                              decoration: InputDecoration(
-                                labelText: 'Email Address',
-                                icon: const Icon(Icons.email),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextFormField(
+                                controller: _emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                autocorrect: false,
+                                validator: (_) {
+                                  return !(state.isEmailValid!)
+                                      ? 'Invalid Email'
+                                      : null;
+                                },
+                                decoration: InputDecoration(
+                                  labelText: 'Email Address',
+                                  icon: const Icon(Icons.email),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextFormField(
-                              controller: _passwordController,
-                              obscureText: true,
-                              autocorrect: false,
-                              validator: (_) {
-                                return !(state.isPasswordValid!)
-                                    ? 'Invalid Password'
-                                    : null;
-                              },
-                              decoration: InputDecoration(
-                                icon: const Icon(Icons.lock),
-                                labelText: 'Password',
-                                suffixIcon: const Icon(Icons.remove_red_eye),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextFormField(
+                                controller: _passwordController,
+                                obscureText: true,
+                                autocorrect: false,
+                                validator: (_) {
+                                  return !(state.isPasswordValid!)
+                                      ? 'Invalid Password'
+                                      : null;
+                                },
+                                decoration: InputDecoration(
+                                  icon: const Icon(Icons.lock),
+                                  labelText: 'Password',
+                                  suffixIcon: const Icon(Icons.remove_red_eye),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 10.0),
-                          CustomButton(
-                              color: AppColors.buttonColors,
-                              text: 'Sign Up',
-                              onPressed: () {
-                                if (isButtonEnabled(state)) {
-                                  _onFormSubmitted();
-                                }
-                              }),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 30.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "I'm already a member.",
-                      style: TextStyle(
-                          color: AppColors.textColors,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    TextButton(
-                      child: Text(
-                        'Sign In',
+                            SizedBox(height: 10.0),
+                            CustomButton(
+                                color: AppColors.buttonColors,
+                                text: 'Sign Up',
+                                onPressed: () {
+                                  if (isButtonEnabled(state)) {
+                                    _onFormSubmitted();
+                                  }
+                                }),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 30.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "I'm already a member.",
                         style: TextStyle(
-                            color: Theme.of(context).accentColor,
+                            color: AppColors.textColors,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      SizedBox(
+                        width: 5.0,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      TextButton(
+                        child: Text(
+                          'Sign In',
+                          style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => LoginScreen()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

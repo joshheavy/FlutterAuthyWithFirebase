@@ -92,124 +92,126 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pop(context);
           }
         },
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset('assets/images/Allura.png'),
-                SizedBox(height: 10.0),
-                Text(
-                  'Sign In',
-                  style: TextStyle(
-                      color: AppColors.textColors,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 19.0),
-                ),
-                BlocBuilder<LoginBloc, LoginState>(
-                  builder: (context, state) {
-                    return Form(
-                      key: _key,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextFormField(
-                              controller: _emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              autocorrect: false,
-                              validator: (_) {
-                                return !(state.isEmailValid!)
-                                    ? 'Invalid Email'
-                                    : null;
-                              },
-                              decoration: InputDecoration(
-                                labelText: 'Email Address',
-                                icon: const Icon(Icons.email),
+        child: DismissKeyboard(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset('assets/images/Allura.png'),
+                  SizedBox(height: 10.0),
+                  Text(
+                    'Sign In',
+                    style: TextStyle(
+                        color: AppColors.textColors,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19.0),
+                  ),
+                  BlocBuilder<LoginBloc, LoginState>(
+                    builder: (context, state) {
+                      return Form(
+                        key: _key,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextFormField(
+                                controller: _emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                autocorrect: false,
+                                validator: (_) {
+                                  return !(state.isEmailValid!)
+                                      ? 'Invalid Email'
+                                      : null;
+                                },
+                                decoration: InputDecoration(
+                                  labelText: 'Email Address',
+                                  icon: const Icon(Icons.email),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextFormField(
-                              controller: _passwordController,
-                              obscureText: _obsecureText,
-                              autocorrect: false,
-                              validator: (_) {
-                                return !(state.isPasswordValid!)
-                                    ? 'Invalid Password'
-                                    : null;
-                              },
-                              decoration: InputDecoration(
-                                icon: const Icon(Icons.lock),
-                                labelText: 'Password',
-                                suffixIcon: IconButton(
-                                  onPressed: _toggle,
-                                  icon: Icon(
-                                    Icons.remove_red_eye,
-                                    color: _obsecureText
-                                        ? Colors.blue
-                                        : AppColors.buttonColors,
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextFormField(
+                                controller: _passwordController,
+                                obscureText: _obsecureText,
+                                autocorrect: false,
+                                validator: (_) {
+                                  return !(state.isPasswordValid!)
+                                      ? 'Invalid Password'
+                                      : null;
+                                },
+                                decoration: InputDecoration(
+                                  icon: const Icon(Icons.lock),
+                                  labelText: 'Password',
+                                  suffixIcon: IconButton(
+                                    onPressed: _toggle,
+                                    icon: Icon(
+                                      Icons.remove_red_eye,
+                                      color: _obsecureText
+                                          ? Colors.blue
+                                          : AppColors.buttonColors,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(right: 20.0),
-                            child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: TextButton(
-                                  style: TextButton.styleFrom(
-                                      primary: AppColors.textColors),
-                                  onPressed: () {},
-                                  child: Text('Forgot Password?')),
+                            Container(
+                              margin: const EdgeInsets.only(right: 20.0),
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: TextButton(
+                                    style: TextButton.styleFrom(
+                                        primary: AppColors.textColors),
+                                    onPressed: () {},
+                                    child: Text('Forgot Password?')),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 10.0),
-                          CustomButton(
-                              text: 'Sign In',
-                              onPressed: () {
-                                if (isButtonEnabled(state)) {
-                                  _onFormSubmitted();
-                                }
-                              }),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 30.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "I'm a new User.",
-                      style: TextStyle(
-                          color: AppColors.textColors,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    TextButton(
-                      child: Text(
-                        'Sign Up',
+                            SizedBox(height: 10.0),
+                            CustomButton(
+                                text: 'Sign In',
+                                onPressed: () {
+                                  if (isButtonEnabled(state)) {
+                                    _onFormSubmitted();
+                                  }
+                                }),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 30.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "I'm a new User.",
                         style: TextStyle(
-                            color: AppColors.buttonColors,
+                            color: AppColors.textColors,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => RegisterScreen()),
+                      SizedBox(
+                        width: 5.0,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      TextButton(
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(
+                              color: AppColors.buttonColors,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => RegisterScreen()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
