@@ -18,9 +18,9 @@ class MainScreen extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
+                const Padding(
                   padding: const EdgeInsets.only(left: 20.0),
-                  child: Text(
+                  child: const Text(
                     'The Best Way to Make Your Ui',
                     style: TextStyle(
                       color: AppColors.textColors, 
@@ -29,7 +29,7 @@ class MainScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomButton(
                   text: 'Sign Up', 
                   onPressed: () => Navigator.of(context).push(
@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
                   ),
                   color: AppColors.buttonColors,
                 ), 
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 CustomButton(
                   onPressed: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (context)=> LoginScreen()),

@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Best Ui with Flutter', 
           style: TextStyle(
             color: Colors.white
@@ -24,12 +24,12 @@ class HomeScreen extends StatelessWidget {
                 AuthenticationLoggedOut()
               );
             }, 
-            icon: Icon(Icons.exit_to_app)
+            icon: const Icon(Icons.exit_to_app)
           )
         ],
       ),
       body: Center(
-        child: Text(
+        child: const Text(
           'Hey there welcome home',
           style: TextStyle(
             color: AppColors.textColors, 

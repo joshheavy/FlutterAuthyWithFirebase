@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -99,8 +99,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset('assets/images/Allura.png'),
-                  SizedBox(height: 10.0),
-                  Text(
+                  const SizedBox(height: 10.0),
+                  const Text(
                     'Sign In',
                     style: TextStyle(
                         color: AppColors.textColors,
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ? 'Invalid Email'
                                       : null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Email Address',
                                   icon: const Icon(Icons.email),
                                 ),
@@ -168,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text('Forgot Password?')),
                               ),
                             ),
-                            SizedBox(height: 10.0),
+                            const SizedBox(height: 10.0),
                             CustomButton(
                                 text: 'Sign In',
                                 onPressed: () {
@@ -181,22 +181,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                   ),
-                  SizedBox(height: 30.0),
+                  const SizedBox(height: 30.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "I'm a new User.",
                         style: TextStyle(
                             color: AppColors.textColors,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5.0,
                       ),
                       TextButton(
-                        child: Text(
+                        child: const Text(
                           'Sign Up',
                           style: TextStyle(
                               color: AppColors.buttonColors,

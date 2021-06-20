@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -92,8 +92,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset('assets/images/Allura.png'),
-                  SizedBox(height: 10.0),
-                  Text(
+                  const SizedBox(height: 10.0),
+                  const Text(
                     'Create an Account',
                     style: TextStyle(
                         color: AppColors.textColors,
@@ -112,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: TextFormField(
                                 controller: _fullnameController,
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Full Name',
                                   icon: const Icon(Icons.email),
                                 ),
@@ -123,7 +123,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: TextFormField(
                                 controller: _phoneController,
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Phone Number',
                                   icon: const Icon(Icons.phone_android),
                                 ),
@@ -140,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       ? 'Invalid Email'
                                       : null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Email Address',
                                   icon: const Icon(Icons.email),
                                 ),
@@ -157,14 +157,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       ? 'Invalid Password'
                                       : null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   icon: const Icon(Icons.lock),
                                   labelText: 'Password',
                                   suffixIcon: const Icon(Icons.remove_red_eye),
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10.0),
+                            const SizedBox(height: 10.0),
                             CustomButton(
                                 color: AppColors.buttonColors,
                                 text: 'Sign Up',
@@ -178,18 +178,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       );
                     },
                   ),
-                  SizedBox(height: 30.0),
+                  const SizedBox(height: 30.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "I'm already a member.",
                         style: TextStyle(
                             color: AppColors.textColors,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5.0,
                       ),
                       TextButton(
